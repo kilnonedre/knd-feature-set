@@ -1,0 +1,17 @@
+// flex 通用函数
+@mixin flex(
+  $dir: row,
+  $x: stretch,
+  $y: stretch,
+  $wrap: nowrap,
+  $xGap: normal,
+  $yGap: normal
+) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $x;
+  align-items: $y;
+  flex-wrap: $wrap;
+  column-gap: $xGap;
+  row-gap: $yGap;
+}

@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
 
-export default nextConfig;
+const nextConfig = {
+  reactStrictMode: true,
+  sassOptions: {
+    additionalData: `@import '@/style/indexStyle.scss';`,
+  },
+}
+
+export default nextConfig
