@@ -1,15 +1,16 @@
 'use client'
 
-import React from 'react'
-import { Button } from '@nextui-org/react'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
-const Home = () => {
-  return (
-    <div>
-      111
-      <Button></Button>
-    </div>
-  )
+const Index = () => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.push('/login')
+  })
+
+  return <div>index</div>
 }
 
-export default Home
+export default Index
