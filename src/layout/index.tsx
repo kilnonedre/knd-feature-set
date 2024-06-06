@@ -1,11 +1,11 @@
 'use client'
 
-import React from 'react'
-import type types from './layoutType.d'
 import { NextUIProvider } from '@nextui-org/react'
+import { useRouter } from 'next/navigation'
+import React from 'react'
 import { Toaster } from 'sonner'
 import { setRouter } from '@/net/middleware'
-import { useRouter } from 'next/navigation'
+import type types from './layoutType.d'
 
 const Layout = ({ children }: types.ConfigProp) => {
   const router = useRouter()

@@ -1,11 +1,11 @@
 'use client'
 
-import React, { useEffect, useState, type CSSProperties } from 'react'
-import styles from './loginStyle.module.scss'
-import { Input, Button } from '@nextui-org/react'
+import { Button, Input } from '@nextui-org/react'
+import React, { type CSSProperties, useEffect, useState } from 'react'
 import Checkbox from '@/component/checkbox'
 import { notYetDeveloped } from '@/util/frontend'
 import { getRandomInt } from '@/util/universal'
+import styles from './loginStyle.module.scss'
 
 const bkList = [
   {

@@ -1,5 +1,5 @@
-import { isValidURL } from '@/util/universal/regularExpression'
 import { API_URL } from '@/env'
+import { isValidURL } from '@/util/universal/regularExpression'
 
 export const isFormData = (object: object | undefined) => {
   if (Object.prototype.toString.call(object) !== '[object FormData]')

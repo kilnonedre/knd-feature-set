@@ -1,8 +1,8 @@
+import databaseList from '@/config/database/index.json'
 import { response } from '@/util/backend'
+import pool from '@/util/mysql'
 import { tryCatch } from '@/util/universal'
 import type types from './databaseType.d'
-import databaseList from '@/config/database/index.json'
-import pool from '@/util/mysql'
 
 const getFun = async () => {
   const sql = `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "knd_tool"`

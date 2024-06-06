@@ -1,5 +1,5 @@
 import { fetchWithInterceptor } from '../middleware'
-import { getToken, formatUrl, isFormData } from './utils'
+import { formatUrl, getToken, isFormData } from './utils'
 
 export const Get = (url: string, params?: object, config?: object) => {
   let suffix = ''

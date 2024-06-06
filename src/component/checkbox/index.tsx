@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import styles from './checkboxStyle.module.scss'
 import types from './checkboxType.d'
+import styles from './checkboxStyle.module.scss'
 
 const Checkbox = (props: types.ConfigProps) => {
   const [isCheck, setIsCheck] = useState(false)
