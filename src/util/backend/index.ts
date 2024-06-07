@@ -6,3 +6,5 @@ export const response = (
   data: any,
   msg: string = 'success'
 ) => NextResponse.json({ code, data, msg }, { status })
+
+export const dataNow = () => Math.round(Number(new Date()) / 1000)

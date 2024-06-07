@@ -7,10 +7,10 @@ import type types from './databaseType.d'
 
 const getFun = async () => {
   const sql = `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '${poolMsg.database}'`
-  const [results] = await pool.query(sql)
-  const format = (results as Array<types.ConfigTable>).map(
-    item => item.TABLE_NAME
-  )
+  const [results] = (await pool.query(sql)) as unknown as [
+    Array<types.ConfigTable>,
+  ]
+  const format = results.map(item => item.TABLE_NAME)
   const isSame = SpliceDatabase().length === format.length
   return isSame
 }

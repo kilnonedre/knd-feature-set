@@ -6,8 +6,10 @@ import { toast } from 'sonner'
 import Checkbox from '@/component/checkbox'
 import Loading from '@/component/loading'
 import { CheckDatabase, CreateDatabase } from '@/service/database'
+import { Login, Register } from '@/service/user'
 import { notYetDeveloped } from '@/util/frontend'
 import { getRandomInt } from '@/util/universal'
+import { isValidEmail } from '@/util/universal/regularExpression'
 import styles from './loginStyle.module.scss'
 
 const bkList = [
@@ -45,10 +47,10 @@ const bkList = [
   },
 ]
 
-const Login = () => {
+const LoginView = () => {
   const [isNeedCreate, setIsNeedCreate] = useState(false)
-  const [account, setAccount] = useState('')
-  const [accountErrMsg, setAccountErrMsg] = useState('')
+  const [email, setEmail] = useState('')
+  const [emailErrMsg, setEmailErrMsg] = useState('')
   const [password, setPassword] = useState('')
   const [passwordErrMsg, setPasswordErrMsg] = useState('')
   const [loginLoading, setLoginLoading] = useState(false)
@@ -71,16 +73,14 @@ const Login = () => {
   const checkDatabase = async () => {
     const response = await CheckDatabase()
     const { code, data, msg } = await response.json()
-    if (code !== 200) {
-      return toast.error(msg)
-    }
+    if (code !== 200) return toast.error(msg)
     setIsNeedCreate(!data)
     setPageLoading(false)
   }
 
-  const updateAccount = (e: string) => {
-    accountErrMsg && setAccountErrMsg('')
-    setAccount(e)
+  const updateEmail = (e: string) => {
+    emailErrMsg && setEmailErrMsg('')
+    setEmail(e)
   }
 
   const updatePassword = (e: string) => {
@@ -94,16 +94,45 @@ const Login = () => {
     setTheme(bkListFilter[index])
   }
 
-  const login = () => {
-    setLoginLoading(true)
-    notYetDeveloped()
-    setLoginLoading(false)
+  const verify = () => {
+    let result = true
+    if (!isValidEmail(email)) {
+      setEmailErrMsg('请输入符合规范的邮箱地址')
+      result = false
+    }
+    if (password.trim().length === 0) {
+      setPasswordErrMsg('请输入符合规范的密码')
+      result = false
+    }
+    return result
   }
 
-  const register = () => {
+  const login = async () => {
+    if (!verify()) return
+    const params = {
+      email,
+      password,
+    }
+    setLoginLoading(true)
+    const response = await Login(params)
+    const { code, msg } = await response.json()
+    setLoginLoading(false)
+    if (code !== 200) return toast.error(msg)
+    toast.success('登录成功')
+  }
+
+  const register = async () => {
+    if (!verify()) return
+    const params = {
+      email,
+      password,
+    }
     setRegisterLoading(true)
-    notYetDeveloped()
+    const response = await Register(params)
+    const { code, msg } = await response.json()
     setRegisterLoading(false)
+    if (code !== 200) return toast.error(msg)
+    toast.success('账户创建成功')
   }
 
   const createDatabase = async () => {
@@ -111,9 +140,7 @@ const Login = () => {
     const response = await CreateDatabase()
     const { code, msg } = await response.json()
     setCreateLoading(false)
-    if (code !== 200) {
-      return toast.error(msg)
-    }
+    if (code !== 200) return toast.error(msg)
     toast.success(msg)
     setIsNeedCreate(false)
   }
@@ -136,10 +163,10 @@ const Login = () => {
                   placeholder="请输入账号"
                   autoComplete="off"
                   isClearable
-                  isInvalid={!!accountErrMsg}
-                  errorMessage={accountErrMsg}
-                  value={account}
-                  onValueChange={updateAccount}
+                  isInvalid={!!emailErrMsg}
+                  errorMessage={emailErrMsg}
+                  value={email}
+                  onValueChange={updateEmail}
                 />
                 <Input
                   className={styles['form-body-input']}
@@ -209,4 +236,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginView

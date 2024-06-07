@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import types from './checkboxType.d'
+import type types from './checkboxType.d'
 import styles from './checkboxStyle.module.scss'
 
 const Checkbox = (props: types.ConfigProps) => {

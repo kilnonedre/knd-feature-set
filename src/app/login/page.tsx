@@ -1,8 +1,8 @@
 import React from 'react'
-import Login from '@/view/login'
+import LoginView from '@/view/login'
 
 const LoginIndex = () => {
-  return <Login />
+  return <LoginView />
 }
 
 export default LoginIndex
