@@ -1,0 +1,16 @@
+[
+  {
+    "name": "base_users",
+    "comment": "用户信息表（基础）",
+    "fieldList": [
+      { "name": "id", "type": "INT", "comment": "ID（自增）" },
+      { "name": "nickname", "type": "CHAR(255)", "comment": "昵称" },
+      { "name": "email", "type": "CHAR(255)", "comment": "邮箱" },
+      { "name": "password", "type": "CHAR(255)", "comment": "密码" },
+      { "name": "avatar", "type": "CHAR(255)", "comment": "头像" },
+      { "name": "create_time", "type": "INT", "comment": "创建时间" },
+      { "name": "update_time", "type": "INT", "comment": "更新时间" }
+    ],
+    "primaryKey": "id"
+  }
+]

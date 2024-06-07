@@ -1,10 +1,8 @@
 import mysql from 'mysql2/promise'
+import { poolMsg } from '@/config/database'
 
 const pool = mysql.createPool({
-  host: '127.0.0.1',
-  user: 'root',
-  database: 'knd_tool',
-  password: 'nmdzz000',
+  ...poolMsg,
   waitForConnections: true,
   connectionLimit: 10,
   maxIdle: 10,

@@ -2,7 +2,9 @@
 
 import { Button, Input } from '@nextui-org/react'
 import React, { type CSSProperties, useEffect, useState } from 'react'
+import { toast } from 'sonner'
 import Checkbox from '@/component/checkbox'
+import { CheckDatabase, CreateDatabase } from '@/service/database'
 import { notYetDeveloped } from '@/util/frontend'
 import { getRandomInt } from '@/util/universal'
 import styles from './loginStyle.module.scss'
@@ -65,7 +67,12 @@ const Login = () => {
   }, [])
 
   const checkDatabase = async () => {
-    setIsNeedCreate(false)
+    const response = await CheckDatabase()
+    const { code, data, msg } = await response.json()
+    if (code !== 200) {
+      return toast.error(msg)
+    }
+    setIsNeedCreate(!data)
   }
 
   const updateAccount = (e: string) => {
@@ -96,10 +103,16 @@ const Login = () => {
     setRegisterLoading(false)
   }
 
-  const createDatabase = () => {
+  const createDatabase = async () => {
     setCreateLoading(true)
-    notYetDeveloped()
+    const response = await CreateDatabase()
+    const { code, msg } = await response.json()
     setCreateLoading(false)
+    if (code !== 200) {
+      return toast.error(msg)
+    }
+    toast.success(msg)
+    setIsNeedCreate(false)
   }
 
   return (

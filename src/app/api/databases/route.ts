@@ -1,16 +1,17 @@
-import databaseList from '@/config/database/index.json'
+import { SpliceDatabase } from '@/config/database'
+import { poolMsg } from '@/config/database'
 import { response } from '@/util/backend'
 import pool from '@/util/mysql'
 import { tryCatch } from '@/util/universal'
 import type types from './databaseType.d'
 
 const getFun = async () => {
-  const sql = `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = "knd_tool"`
+  const sql = `SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '${poolMsg.database}'`
   const [results] = await pool.query(sql)
   const format = (results as Array<types.ConfigTable>).map(
     item => item.TABLE_NAME
   )
-  const isSame = databaseList.length === format.length
+  const isSame = SpliceDatabase().length === format.length
   return isSame
 }
 
@@ -23,19 +24,20 @@ export const GET = async () => {
 
 const postFun = async () => {
   await Promise.all(
-    databaseList.map(table => {
+    SpliceDatabase().map(table => {
       const declare: Array<string> = []
-      for (const key in table.data) {
-        const isPrimaryKey = key === table.primaryKey
+
+      table.fieldList.map(field => {
+        const isPrimaryKey = field.name === table.primaryKey
         declare.push(
-          `${key} ${table.data[key as keyof typeof table.data]} ${
+          `${field.name} ${field.type} ${
             isPrimaryKey ? 'PRIMARY KEY AUTO_INCREMENT' : ''
-          }`
+          } COMMENT '${field.comment}'`
         )
-      }
+      })
       const sql = `CREATE TABLE IF NOT EXISTS ${table.name} (${declare.join(
         ','
-      )})`
+      )}) COMMENT = '${table.comment}'`
       return pool.query(sql)
     })
   )
@@ -43,7 +45,7 @@ const postFun = async () => {
 }
 
 export const POST = async () => {
-  const { isSuccess, error } = await tryCatch(postFun)
-  if (isSuccess) return response(200, 200, true)
+  const { isSuccess, data, error } = await tryCatch(postFun)
+  if (isSuccess) return response(200, 200, data, '数据库创建成功')
   return response(200, 400, false, error.message)
 }
