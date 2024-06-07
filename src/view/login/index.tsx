@@ -4,6 +4,7 @@ import { Button, Input } from '@nextui-org/react'
 import React, { type CSSProperties, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import Checkbox from '@/component/checkbox'
+import Loading from '@/component/loading'
 import { CheckDatabase, CreateDatabase } from '@/service/database'
 import { notYetDeveloped } from '@/util/frontend'
 import { getRandomInt } from '@/util/universal'
@@ -53,6 +54,7 @@ const Login = () => {
   const [loginLoading, setLoginLoading] = useState(false)
   const [registerLoading, setRegisterLoading] = useState(false)
   const [createLoading, setCreateLoading] = useState(false)
+  const [pageLoading, setPageLoading] = useState(true)
   const [theme, setTheme] = useState({
     id: 1,
     styles: {
@@ -73,6 +75,7 @@ const Login = () => {
       return toast.error(msg)
     }
     setIsNeedCreate(!data)
+    setPageLoading(false)
   }
 
   const updateAccount = (e: string) => {
@@ -117,6 +120,7 @@ const Login = () => {
 
   return (
     <div className={styles['login']} style={theme.styles as CSSProperties}>
+      {pageLoading && <Loading />}
       <div className={styles['login-panel']}>
         <div className={styles['login-panel-bk']}></div>
         <div className={styles['login-panel-main']}>
