@@ -115,9 +115,10 @@ const LoginView = () => {
     }
     setLoginLoading(true)
     const response = await Login(params)
-    const { code, msg } = await response.json()
+    const { code, data, msg } = await response.json()
     setLoginLoading(false)
     if (code !== 200) return toast.error(msg)
+    localStorage.setItem('KND_TOKEN', data)
     toast.success('登录成功')
   }
 

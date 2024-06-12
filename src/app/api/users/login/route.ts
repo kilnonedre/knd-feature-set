@@ -1,6 +1,7 @@
 import { NextRequest } from 'next/server'
 import type { ConfigBaseUser } from '@/config/database/databaseType.d'
 import { response } from '@/util/backend'
+import { createToken } from '@/util/backend/token'
 import pool from '@/util/mysql'
 import { tryCatch } from '@/util/universal'
 import type types from './loginType.d'
@@ -12,7 +13,8 @@ const postFun = async ({ email, password }: types.ConfigPostParams) => {
   ]
   if (userList.length === 0) throw new Error('用户不存在')
   if (userList[0].password !== password) throw new Error('密码错误')
-  return true
+  const token = await createToken({ nickname: 1 })
+  return token
 }
 
 export const POST = async (request: NextRequest) => {
