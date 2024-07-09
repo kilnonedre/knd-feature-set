@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Layout from '@/layout'
+import BaseLayout from '@/layout/base'
 import './globalStyle.css'
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ const RootLayout = ({
   return (
     <html lang="zh-CN">
       <body>
-        <Layout>{children}</Layout>
+        <BaseLayout>{children}</BaseLayout>
       </body>
     </html>
   )

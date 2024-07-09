@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
+import Loading from '@/component/loading'
 
 const Index = () => {
   const router = useRouter()
@@ -10,7 +11,7 @@ const Index = () => {
     router.push('/login')
   })
 
-  return <div>index</div>
+  return <Loading />
 }
 
 export default Index

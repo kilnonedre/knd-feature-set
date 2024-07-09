@@ -5,9 +5,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { toast, Toaster } from 'sonner'
 import { setRouter } from '@/net/middleware'
+import Header from './component/header'
 import type types from './layoutType.d'
 
-const Layout = ({ children }: types.ConfigProp) => {
+const BaseLayout = ({ children }: types.ConfigProp) => {
   const router = useRouter()
 
   setRouter(router)
@@ -15,6 +16,8 @@ const Layout = ({ children }: types.ConfigProp) => {
   const pathname = usePathname()
 
   const noVerifyPageList = ['/login']
+
+  const noLayout = ['/', '/login']
 
   useEffect(() => {
     const index = noVerifyPageList.indexOf(pathname)
@@ -26,10 +29,13 @@ const Layout = ({ children }: types.ConfigProp) => {
 
   return (
     <>
-      <NextUIProvider>{children}</NextUIProvider>
+      <NextUIProvider>
+        {noLayout.includes(pathname) ? <></> : <Header />}
+        {children}
+      </NextUIProvider>
       <Toaster position="bottom-right" richColors closeButton />
     </>
   )
 }
 
-export default Layout
+export default BaseLayout

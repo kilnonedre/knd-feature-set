@@ -1,0 +1,44 @@
+.header {
+  height: 60px;
+  height: 60px;
+  background: #fff;
+  box-shadow: 0 2px 6px 0 rgba(10, 42, 107, 0.15);
+  @include flex($x: flex-end, $y: center);
+  &-avatar {
+    margin-right: 50px;
+  }
+}
+
+.tag {
+  @include flex($x: flex-start, $xGap: 10px);
+  &-arrow {
+    margin-left: auto;
+  }
+}
+
+.information {
+  width: 200px;
+  @include flex($x: stretch, $y: center, $dir: column);
+  &__mask {
+    opacity: 1;
+  }
+  &-name {
+    font-weight: 700;
+  }
+  &-identity {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  &-level {
+    @include flex($y: center, $xGap: 5px);
+    width: 100%;
+    &-now,
+    &-next {
+      font-size: 12px;
+    }
+  }
+  &-tip {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}

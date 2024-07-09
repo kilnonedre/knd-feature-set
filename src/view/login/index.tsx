@@ -1,6 +1,7 @@
 'use client'
 
 import { Button, Input } from '@nextui-org/react'
+import { useRouter } from 'next/navigation'
 import React, { type CSSProperties, useEffect, useState } from 'react'
 import { toast } from 'sonner'
 import Checkbox from '@/component/checkbox'
@@ -107,6 +108,8 @@ const LoginView = () => {
     return result
   }
 
+  const router = useRouter()
+
   const login = async () => {
     if (!verify()) return
     const params = {
@@ -120,6 +123,7 @@ const LoginView = () => {
     if (code !== 200) return toast.error(msg)
     localStorage.setItem('KND_TOKEN', data)
     toast.success('登录成功')
+    router.push('/key_bag')
   }
 
   const register = async () => {
