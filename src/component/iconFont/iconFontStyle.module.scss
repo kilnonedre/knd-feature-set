@@ -1,0 +1,6 @@
+.icon {
+  font-family: 'iconFont';
+  &:hover {
+    color: var(--hover-color);
+  }
+}

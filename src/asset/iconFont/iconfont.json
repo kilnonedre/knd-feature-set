@@ -1,0 +1,44 @@
+{
+  "id": "4580672",
+  "name": "knd-feature-set",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18531433",
+      "name": "arrow",
+      "font_class": "arrow",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "6880947",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e695",
+      "unicode_decimal": 59029
+    },
+    {
+      "icon_id": "35986977",
+      "name": "个人",
+      "font_class": "geren",
+      "unicode": "e75d",
+      "unicode_decimal": 59229
+    },
+    {
+      "icon_id": "1167181",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e643",
+      "unicode_decimal": 58947
+    },
+    {
+      "icon_id": "29808350",
+      "name": "占位符",
+      "font_class": "zhanweifu",
+      "unicode": "e8c6",
+      "unicode_decimal": 59590
+    }
+  ]
+}
