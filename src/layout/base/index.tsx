@@ -6,7 +6,9 @@ import React, { useEffect } from 'react'
 import { toast, Toaster } from 'sonner'
 import { setRouter } from '@/net/middleware'
 import Header from './component/header'
-import type types from './layoutType.d'
+import Menu from './component/menu'
+import type types from './baseLayoutType'
+import styles from './baseLayoutStyle.module.scss'
 
 const BaseLayout = ({ children }: types.ConfigProp) => {
   const router = useRouter()
@@ -17,7 +19,9 @@ const BaseLayout = ({ children }: types.ConfigProp) => {
 
   const noVerifyPageList = ['/login']
 
-  const noLayout = ['/', '/login']
+  const noLayout = ['/', '/login', '/base']
+
+  const noMenu = ['']
 
   useEffect(() => {
     const index = noVerifyPageList.indexOf(pathname)
@@ -30,8 +34,11 @@ const BaseLayout = ({ children }: types.ConfigProp) => {
   return (
     <>
       <NextUIProvider>
-        {noLayout.includes(pathname) ? <></> : <Header />}
-        {children}
+        <div className={styles['base']}>
+          {!noLayout.includes(pathname) && <Header />}
+          {!noMenu.includes(pathname) && <Menu />}
+          <div className={styles['base-body']}>{children}</div>
+        </div>
       </NextUIProvider>
       <Toaster position="bottom-right" richColors closeButton />
     </>

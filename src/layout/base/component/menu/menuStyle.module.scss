@@ -1,0 +1,35 @@
+.menu {
+  @include flex($y: center, $dir: column, $yGap: 15px);
+  position: absolute;
+  background-color: #fafbff;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #d9d9d9;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.2s;
+  &--collapse {
+    left: -65px;
+  }
+  &--expand {
+    left: 10px;
+  }
+  &-placeholder {
+    div {
+      line-height: 1em;
+    }
+  }
+  &-divide {
+    border-top: 1px solid #e8e9e9;
+    width: 100%;
+  }
+  &-function {
+    @include flex($y: center, $dir: column, $yGap: 20px);
+    margin: 5px 0;
+  }
+  &-avatar {
+    width: 24px;
+    height: 24px;
+  }
+}

@@ -2,7 +2,7 @@
   "extends": "next/core-web-vitals",
   "plugins": ["simple-import-sort"],
   "rules": {
-    "no-unused-vars": "error",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
     "no-console": "off",
     "no-debugger": "off",
     "array-bracket-spacing": 2,

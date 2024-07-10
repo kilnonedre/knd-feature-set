@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "22353442",
+      "name": "插入占位符",
+      "font_class": "charuzhanweifu",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
       "icon_id": "18531433",
       "name": "arrow",
       "font_class": "arrow",
@@ -32,13 +39,6 @@
       "font_class": "shezhi",
       "unicode": "e643",
       "unicode_decimal": 58947
-    },
-    {
-      "icon_id": "29808350",
-      "name": "占位符",
-      "font_class": "zhanweifu",
-      "unicode": "e8c6",
-      "unicode_decimal": 59590
     }
   ]
 }

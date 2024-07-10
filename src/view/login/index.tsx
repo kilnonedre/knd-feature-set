@@ -123,7 +123,7 @@ const LoginView = () => {
     if (code !== 200) return toast.error(msg)
     localStorage.setItem('KND_TOKEN', data)
     toast.success('登录成功')
-    router.push('/key_bag')
+    router.push('/base')
   }
 
   const register = async () => {

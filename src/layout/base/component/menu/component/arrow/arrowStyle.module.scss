@@ -1,0 +1,57 @@
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -15px;
+  cursor: pointer;
+  width: 10px;
+  height: 25px;
+  transition: all 0.1s;
+  @include flex($x: center, $y: center);
+  &--expand {
+    &:hover {
+      .arrow-main {
+        &-top,
+        &-bottom {
+          background-color: #46464f;
+        }
+        &-top {
+          transform: translateY(2px) rotate(20deg);
+        }
+        &-bottom {
+          transform: translateY(-2px) rotate(-20deg);
+        }
+      }
+    }
+  }
+  &--collapse {
+    .arrow-main {
+      &-top,
+      &-bottom {
+        background-color: #46464f;
+      }
+      &-top {
+        transform: translateY(2px) rotate(-20deg);
+      }
+      &-bottom {
+        transform: translateY(-2px) rotate(20deg);
+      }
+    }
+  }
+  &-main {
+    &-top,
+    &-bottom {
+      width: 4px;
+      height: 15px;
+      border-radius: 100px;
+      background-color: #d9d9d9;
+      transition: all 0.1s;
+    }
+    &-top {
+      transform: translateY(2px) rotate(0deg);
+    }
+    &-bottom {
+      transform: translateY(-2px) rotate(0deg);
+    }
+  }
+}
