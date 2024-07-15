@@ -10,12 +10,14 @@
   transform: translateY(-50%);
   transition: all 0.2s;
   &--collapse {
-    left: -65px;
+    left: -72px;
   }
   &--expand {
     left: 10px;
   }
-  &-placeholder {
+  &-logo {
+    margin: 0.75em 0;
+    cursor: pointer;
     div {
       line-height: 1em;
     }
@@ -24,12 +26,41 @@
     border-top: 1px solid #e8e9e9;
     width: 100%;
   }
-  &-function {
+  &-app {
     @include flex($y: center, $dir: column, $yGap: 20px);
     margin: 5px 0;
+    &-single {
+      cursor: pointer;
+      height: 40px;
+      aspect-ratio: 1;
+      @include flex($x: center, $y: center);
+      background-color: transparent;
+      transition: all 0.1s;
+      &:hover {
+        background-color: #e7ebf6;
+        border-radius: 10px;
+        div {
+          color: #000000 !important;
+        }
+      }
+    }
   }
   &-avatar {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
+  }
+  &-all {
+    margin: 0.25em 0 0.5em 0;
+    cursor: pointer;
+    height: 40px;
+    aspect-ratio: 1;
+    @include flex($x: center, $y: center);
+    &:hover {
+      background-color: #e7ebf6;
+      border-radius: 10px;
+    }
+    div {
+      line-height: 1em;
+    }
   }
 }

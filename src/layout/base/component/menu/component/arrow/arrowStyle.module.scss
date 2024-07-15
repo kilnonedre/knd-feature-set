@@ -26,15 +26,19 @@
   }
   &--collapse {
     .arrow-main {
-      &-top,
-      &-bottom {
-        background-color: #46464f;
-      }
       &-top {
         transform: translateY(2px) rotate(-20deg);
       }
       &-bottom {
         transform: translateY(-2px) rotate(20deg);
+      }
+    }
+    &:hover {
+      .arrow-main {
+        &-top,
+        &-bottom {
+          background-color: #46464f;
+        }
       }
     }
   }

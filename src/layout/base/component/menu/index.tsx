@@ -2,19 +2,34 @@
 
 import { Avatar } from '@nextui-org/react'
 import classNames from 'classnames'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import AvatarPng from '@/asset/image/avatar/avatar.png'
 import IconFont from '@/component/iconFont'
+import { notYetDeveloped } from '@/util/frontend'
 import Arrow from './component/arrow'
 import styles from './menuStyle.module.scss'
 
 const Menu = () => {
-  const navList = [
-    { id: 1, icon: '' },
-    { id: 2, icon: '' },
-    { id: 3, icon: '' },
+  const appList = [
+    { id: 1, icon: '', path: '/key_bag' },
+    { id: 2, icon: '' },
+    { id: 3, icon: '' },
   ]
 
-  const [isCollapse, setIsCollapse] = useState(false)
+  const router = useRouter()
+
+  const [isCollapse, setIsCollapse] = useState(true)
+
+  const toUrl = (path?: string) => {
+    if (!path) {
+      notYetDeveloped()
+      return
+    }
+    router.push(path)
+    setIsCollapse(true)
+  }
+
   return (
     <div
       className={classNames(
@@ -27,15 +42,19 @@ const Menu = () => {
         }
       )}
     >
-      <div className={styles['menu-placeholder']}>
-        <IconFont icon="" size="32px" />
+      <div className={styles['menu-logo']} onClick={() => toUrl('/base')}>
+        <IconFont icon="" size="32px" cursor="pointer" />
       </div>
       <div className={styles['menu-divide']}></div>
-      <div className={styles['menu-function']}>
-        {navList.map(nav => {
+      <div className={styles['menu-app']}>
+        {appList.map(app => {
           return (
-            <div className={styles['menu-placeholder']} key={nav.id}>
-              <IconFont icon="" size="24px" />
+            <div
+              className={styles['menu-app-single']}
+              key={app.id}
+              onClick={() => toUrl(app.path)}
+            >
+              <IconFont icon={app.icon} size="24px" color="#7d848e" />
             </div>
           )
         })}
@@ -44,10 +63,10 @@ const Menu = () => {
       <Avatar
         isBordered
         className={styles['menu-avatar']}
-        src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+        src={AvatarPng.src}
       />
-      <div className={styles['menu-placeholder']}>
-        <IconFont icon="" size="24px" />
+      <div className={styles['menu-all']}>
+        <IconFont icon="" size="24px" bold="bold" />
       </div>
       <Arrow
         isCollapse={isCollapse}

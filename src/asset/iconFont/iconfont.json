@@ -6,6 +6,34 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "3092113",
+      "name": "屏幕全屏",
+      "font_class": "pingmuquanping",
+      "unicode": "e781",
+      "unicode_decimal": 59265
+    },
+    {
+      "icon_id": "38644695",
+      "name": "图库",
+      "font_class": "a-44tubiao-81",
+      "unicode": "e698",
+      "unicode_decimal": 59032
+    },
+    {
+      "icon_id": "38711360",
+      "name": "幻灯片",
+      "font_class": "huandengpian",
+      "unicode": "e71b",
+      "unicode_decimal": 59163
+    },
+    {
+      "icon_id": "41035162",
+      "name": "钥匙",
+      "font_class": "yuechi1-copy",
+      "unicode": "e75e",
+      "unicode_decimal": 59230
+    },
+    {
       "icon_id": "22353442",
       "name": "插入占位符",
       "font_class": "charuzhanweifu",
