@@ -9,11 +9,19 @@
   top: 50%;
   transform: translateY(-50%);
   transition: all 0.2s;
+  width: var(--var-width);
+  height: var(--var-height);
   &--collapse {
     left: -72px;
   }
   &--expand {
     left: 10px;
+  }
+  &--overflow {
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    border-radius: 0px;
   }
   &-logo {
     margin: 0.75em 0;
@@ -49,7 +57,7 @@
     width: 30px;
     height: 30px;
   }
-  &-all {
+  &-full {
     margin: 0.25em 0 0.5em 0;
     cursor: pointer;
     height: 40px;

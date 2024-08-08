@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { type CSSProperties, useState } from 'react'
 import type types from './checkboxType.d'
 import styles from './checkboxStyle.module.scss'
 
@@ -36,7 +36,7 @@ const Checkbox = (prop: types.ConfigProp) => {
         />
         <div
           className={styles['checkbox__fake']}
-          style={styleList[Number(isCheck)] as React.CSSProperties}
+          style={styleList[Number(isCheck)] as CSSProperties}
         ></div>
         <p>{prop.text}</p>
       </label>
